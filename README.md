@@ -15,17 +15,21 @@ Include jQuery and the plugin on your page. Then select a input element and call
 		});
 	</script>
 	<input type="text" name="time" />
+
+If you want an initial "starting time" (what would make sense with the **step** option for minutes, see below) you should set this as the ```input```'s value, e.g.:
+
+	<input type="text" name="time" value="08:15" />
 	
 ## Options
 **hours12** (default: true)   
 Type: Boolean   
-Define whether or not to show AM/PM with selected time.
+Decide between AM/PM / 12 hour (setting: true) or 24 hour (setting: false) clock.
 
 ***
 
 **step** (default: 1)   
 Type: Number   
-The step size to adjust minutes when click the timeselector buttons or press the UP/DOWN KEY on the keyboard.
+The step size to adjust minutes when click the timeselector buttons or press the UP/DOWN KEY on the keyboard. You should set a starting value for your HTML input field (see Usage) if you want to achieve steps like "08:15 - 08:30 - 08:45" and so on.
 
 ## Methods
 **option( options )**  
