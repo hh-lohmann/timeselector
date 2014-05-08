@@ -346,7 +346,7 @@
 	};
 
 	$.fn.timeselector = function(options) {
-		var args = Array.prototype.slice.call(arguments, 1);
+		var args = arguments[1] ;
 		
 		if (!$.fn.timeselector.timer.initialized) {
 			$.fn.timeselector.timer._create();
@@ -358,7 +358,9 @@
 				var method = $.fn.timeselector.timer[options];
 				
 				if (typeof method === 'function' && options.charAt(0) !== '_') {
-					method.apply($.fn.timeselector.timer, [this].concat(args));
+					          options = $.extend( $.fn.timeselector.defaults, args, options);
+					          $.fn.timeselector.timer._attach(this, options);
+
 				}
 			});
 		} else {
