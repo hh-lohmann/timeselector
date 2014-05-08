@@ -1,12 +1,13 @@
 /*
- * timeselector
- * https://github.com/nicolaszhao/timeselector
- *
- * Copyright (c) 2014 Nicolas Zhao
+ * timeselector - version with "jQuery()" instead of "$()"
+ * see https://github.com/hh-lohmann/timeselector/tree/no$
+ * 
+ * Original timeselector Copyright (c) 2014 Nicolas Zhao
+ * This version 2014/05/08 hh.lohmann@yahoo.de
  * Licensed under the MIT license.
  */
 
-(function($) {
+(function() {
 	
 	var Timeselector = function() {
 		this._$div = null;
@@ -88,7 +89,7 @@
 			
 			time = this._match(time);
 			this._$div.find('.timeselector-value').each(function(i) {
-				$(this).text(time[i]);
+				jQuery(this).text(time[i]);
 			});
 		},
 		
@@ -113,7 +114,7 @@
 		},
 		
 		_getInst: function(target) {
-			return $(target).data('timeselector');
+			return jQuery(target).data('timeselector');
 		},
 		
 		_selectTime: function(inst, type, steps, delay) {
@@ -174,7 +175,7 @@
 				return;
 			}
 			
-			var $input = $(input),
+			var $input = jQuery(input),
 				inst = this._getInst(input),
 				isFixed = false,
 				pos;
@@ -188,13 +189,13 @@
 			this._update(inst);
 			
 			$input.parents().each(function() {
-				isFixed = $(this).css('position') === 'fixed';
+				isFixed = jQuery(this).css('position') === 'fixed';
 				return !isFixed;
 			});
 			pos = $input.offset();
 			pos.top += input.offsetHeight;
-			pos.left -= isFixed ? $(document).scrollLeft() : 0;
-			pos.top -= isFixed ? $(document).scrollTop() : 0;
+			pos.left -= isFixed ? jQuery(document).scrollLeft() : 0;
+			pos.top -= isFixed ? jQuery(document).scrollTop() : 0;
 			inst.div.css({
 				position: (isFixed ? 'fixed' : 'absolute'),
 				display: 'none',
@@ -225,7 +226,7 @@
 				return;
 			}
 			
-			var $target = $(event.target),
+			var $target = jQuery(event.target),
 				inst = this._getInst($target[0]);
 				
 			if ((!inst && !$target.closest('#timeselector-div').length && this._showing) || 
@@ -235,7 +236,7 @@
 		},
 		
 		_zIndex: function(elem) {
-			elem = $(elem);
+			elem = jQuery(elem);
 			
 			var position, value;
 			
@@ -267,29 +268,29 @@
 			
 			inst = {
 				id: target.id,
-				input: $(target),
+				input: jQuery(target),
 				div: this._$div,
-				options: $.extend({}, options)
+				options: jQuery.extend({}, options)
 			};
 			this._setTimeFromField(inst);
 			if (this._match(target.value)) {
 				this._setTime(inst);
 			}
 			
-			$(target).data('timeselector', inst)
+			jQuery(target).data('timeselector', inst)
 				.attr('autocomplete', 'off')
-				.on('keydown.timeselector', $.proxy(this._doKeyDown, this))
-				.on('keyup.timeselector', $.proxy(this._doKeyUp, this))
-				.on('focus.timeselector', $.proxy(this._show, this))
-				.on('blur.timeselector', $.proxy(this._stop, this));
+				.on('keydown.timeselector', jQuery.proxy(this._doKeyDown, this))
+				.on('keyup.timeselector', jQuery.proxy(this._doKeyUp, this))
+				.on('focus.timeselector', jQuery.proxy(this._show, this))
+				.on('blur.timeselector', jQuery.proxy(this._stop, this));
 		},
 		
 		_create: function() {
 			var that = this;
 
-			this._$div = $(this._generateHtml()).appendTo('body').hide()
+			this._$div = jQuery(this._generateHtml()).appendTo('body').hide()
 				.on('mousedown.timeselector', '.timeselector-button', function(event) {
-					var $button = $(this);
+					var $button = jQuery(this);
 					
 					if (that._inst.input[0] !== document.activeElement) {
 						that._inst.input.focus();
@@ -300,23 +301,23 @@
 					event.preventDefault();
 				})
 				.on('mouseup.timeselector', '.timeselector-button', function() {
-					$(this).removeClass('timeselector-state-active');
+					jQuery(this).removeClass('timeselector-state-active');
 					that._stop();
 				})
 				.on('mouseenter.timeselector', '.timeselector-button', function() {
-					var $button = $(this);
+					var $button = jQuery(this);
 					
 					if ($button.hasClass('timeselector-state-active')) {
 						that._selectTime(that._inst, $button.parent('.timeselector-item').data('type'), $button.hasClass('timeselector-up') ? 1 : -1);
 					}
 				})
-				.on('mouseleave.timeselector', '.timeselector-button', $.proxy(this._stop, this))
+				.on('mouseleave.timeselector', '.timeselector-button', jQuery.proxy(this._stop, this))
 				.on('click.timeselector', '.timeselector-value', function() {
 					that._setTime(that._inst);
 					that._hide();
 				});
 				
-			$(document).on('mousedown.timeselector', $.proxy(this._checkExternalClick, this));
+			jQuery(document).on('mousedown.timeselector', jQuery.proxy(this._checkExternalClick, this));
 		},
 		
 		option: function(target, options) {
@@ -327,7 +328,7 @@
 					this._hide();
 				}
 				
-				$.extend(inst.options, options);
+				jQuery.extend(inst.options, options);
 				this._setTime(inst);
 				this._update(inst);
 			}
@@ -345,39 +346,38 @@
 		}
 	};
 
-	$.fn.timeselector = function(options) {
+	jQuery.fn.timeselector = function(options) {
 		var args = arguments[1] ;
 		
-		if (!$.fn.timeselector.timer.initialized) {
-			$.fn.timeselector.timer._create();
-			$.fn.timeselector.timer.initialized = true;
+		if (!jQuery.fn.timeselector.timer.initialized) {
+			jQuery.fn.timeselector.timer._create();
+			jQuery.fn.timeselector.timer.initialized = true;
 		}
 		
 		if (typeof options === 'string') {
 			this.each(function() {
-				var method = $.fn.timeselector.timer[options];
+				var method = jQuery.fn.timeselector.timer[options];
 				
 				if (typeof method === 'function' && options.charAt(0) !== '_') {
-					          options = $.extend( $.fn.timeselector.defaults, args, options);
-					          $.fn.timeselector.timer._attach(this, options);
-
+          options = jQuery.extend( jQuery.fn.timeselector.defaults, args, options);
+          jQuery.fn.timeselector.timer._attach(this, options);
 				}
 			});
 		} else {
-			options = $.extend({}, $.fn.timeselector.defaults, options);
+			options = jQuery.extend({}, jQuery.fn.timeselector.defaults, options);
 			this.each(function() {
-				$.fn.timeselector.timer._attach(this, options);
+				jQuery.fn.timeselector.timer._attach(this, options);
 			});
 		}
-		
+
 		return this;
 	};
 	
-	$.fn.timeselector.defaults = {
+	jQuery.fn.timeselector.defaults = {
 		hours12: true,
 		step: 1
 	};
 	
-	$.fn.timeselector.timer = new Timeselector();
+	jQuery.fn.timeselector.timer = new Timeselector();
 
 }(jQuery));
