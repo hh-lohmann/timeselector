@@ -369,7 +369,8 @@
 		          		options = $.extend( $.fn.timeselector.defaults, JSON.parse ( arrOptsInputs[0].value ), options);
 		          		$.fn.timeselector.timer._attach(this, options);
 		        	}
-		      	}) ;			options = jQuery.extend({}, jQuery.fn.timeselector.defaults, options);
+		      	}) ;
+		      	options = jQuery.extend({}, jQuery.fn.timeselector.defaults, options);
 			this.each(function() {
 				jQuery.fn.timeselector.timer._attach(this, options);
 			});
