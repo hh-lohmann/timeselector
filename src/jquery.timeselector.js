@@ -358,12 +358,18 @@
 				var method = $.fn.timeselector.timer[options];
 				
 				if (typeof method === 'function' && options.charAt(0) !== '_') {
-					          options = $.extend( $.fn.timeselector.defaults, args, options);
-					          $.fn.timeselector.timer._attach(this, options);
-
+					options = $.extend( $.fn.timeselector.defaults, args, options);
+					$.fn.timeselector.timer._attach(this, options);
 				}
 			});
 		} else {
+		        this.each ( function () { 
+		        	var arrOptsInputs = document.getElementsByName ( this.name + '-timeselector-opts' ) ;
+		        	if ( arrOptsInputs.length == 1 ) {
+		          		options = $.extend( $.fn.timeselector.defaults, JSON.parse ( arrOptsInputs[0].value ), options);
+		          		$.fn.timeselector.timer._attach(this, options);
+		        	}
+		      	}) ;
 			options = $.extend({}, $.fn.timeselector.defaults, options);
 			this.each(function() {
 				$.fn.timeselector.timer._attach(this, options);
