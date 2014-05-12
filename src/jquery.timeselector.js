@@ -359,28 +359,12 @@
 				var method = jQuery.fn.timeselector.timer[options];
 				
 				if (typeof method === 'function' && options.charAt(0) !== '_') {
-<<<<<<< HEAD
           options = jQuery.extend( jQuery.fn.timeselector.defaults, args, options);
           jQuery.fn.timeselector.timer._attach(this, options);
 				}
 			});
 		} else {
 			options = jQuery.extend({}, jQuery.fn.timeselector.defaults, options);
-=======
-					options = $.extend( $.fn.timeselector.defaults, args, options);
-					$.fn.timeselector.timer._attach(this, options);
-				}
-			});
-		} else {
-		        this.each ( function () { 
-		        	var arrOptsInputs = document.getElementsByName ( this.name + '-timeselector-opts' ) ;
-		        	if ( arrOptsInputs.length == 1 ) {
-		          		options = $.extend( $.fn.timeselector.defaults, JSON.parse ( arrOptsInputs[0].value ), options);
-		          		$.fn.timeselector.timer._attach(this, options);
-		        	}
-		      	}) ;
-			options = $.extend({}, $.fn.timeselector.defaults, options);
->>>>>>> 3a9dd782ce87df041ecfe916df18b22386c84801
 			this.each(function() {
 				jQuery.fn.timeselector.timer._attach(this, options);
 			});
