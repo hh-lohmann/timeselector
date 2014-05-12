@@ -1,4 +1,4 @@
-.timeselector { padding: 2px; line-height: 100%; color: #333; border: solid 1px #aaa; border-radius: 6px; background: #c9c9c9; position: absolute; overflow: hidden; 
+div.timeselector { padding: 2px; line-height: 100%; color: #333; border: solid 1px #aaa; border-radius: 6px; background: #c9c9c9; position: absolute; overflow: hidden; 
 	-moz-user-select: none;
 	-webkit-user-select: none;
 	-ms-user-select: none;
