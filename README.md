@@ -37,6 +37,28 @@ Decide between AM/PM / 12 hour (setting: true) or 24 hour (setting: false) clock
 Type: Number   
 The step size to adjust minutes when click the timeselector buttons or press the UP/DOWN KEY on the keyboard. You should set a starting value for your HTML input field (see Usage) if you want to achieve steps like "08:15 - 08:30 - 08:45" and so on.
 
+### Setting Options
+
+#### Via ```option``` Method
+
+See below. Note that this means changing the JavaScript section / file.
+
+
+#### Via an accompanying options ```input```
+
+If you prefer setting options *in situ* of the timeselector ```input``` tag in your HTML code you can apply a **hidden** HTML ```input``` element whose ```name``` is that of the timeselector input plus **-timeselector-opts**. The ```value``` of that additional input will be read out for timeselector options, e.g.
+
+	<input type="hidden" name="time-timeselector-opts" value='{ "hours12": false, "step": 15 }' />
+
+to set options for
+
+	<input type="text" name="time" value="08:15" />
+
+Note that an options ```input``` only applies if there are not already have been set options by the option **method**, i.e. you **cannot overwrite** settings in the JavaScript section / file by an options ```input``` (this is based on a model considering JavaScript  parts as "system level" and HTML as "content level").
+
+
+
+
 ## Methods
 **option( options )**  
 Returns: jQuery   
