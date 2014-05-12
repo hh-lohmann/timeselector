@@ -48,7 +48,9 @@ Set one or more options for the timeselector.
 	
 **Code example:**
 	
-	$('[name="time"]').timeselector('option', {hours12: false});
+	$('[name="time"]').timeselector('option', {"hours12": false});
+
+*Note the double quotes around "hours12" which are not necessary for timeselector but are obligatory for correct [JSON](http://en.wikipedia.org/wiki/JSON) syntax which lies behind here*
 
 ***
 
