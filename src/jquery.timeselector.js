@@ -357,14 +357,19 @@
 		if (typeof options === 'string') {
 			this.each(function() {
 				var method = jQuery.fn.timeselector.timer[options];
-				
 				if (typeof method === 'function' && options.charAt(0) !== '_') {
-          options = jQuery.extend( jQuery.fn.timeselector.defaults, args, options);
-          jQuery.fn.timeselector.timer._attach(this, options);
+			        	options = jQuery.extend( jQuery.fn.timeselector.defaults, args, options);
+          				jQuery.fn.timeselector.timer._attach(this, options);
 				}
 			});
 		} else {
-			options = jQuery.extend({}, jQuery.fn.timeselector.defaults, options);
+		        this.each ( function () { 
+		        	var arrOptsInputs = document.getElementsByName ( this.name + '-timeselector-opts' ) ;
+		        	if ( arrOptsInputs.length == 1 ) {
+		          		options = $.extend( $.fn.timeselector.defaults, JSON.parse ( arrOptsInputs[0].value ), options);
+		          		$.fn.timeselector.timer._attach(this, options);
+		        	}
+		      	}) ;			options = jQuery.extend({}, jQuery.fn.timeselector.defaults, options);
 			this.each(function() {
 				jQuery.fn.timeselector.timer._attach(this, options);
 			});
