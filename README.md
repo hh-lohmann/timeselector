@@ -20,12 +20,6 @@ If you want an initial "starting time" (what would make sense with the **step** 
 
 	<input type="text" name="time" value="08:15" />
 	
-
-## Restrictions
-
-Due to implementation details you currently cannot have more than one timeselector on the same page (maybe you can if your browser applies some non-standard intelligence) since the checking logic for ```_checkExternalClick``` in ```src/jquery.timeselector.js``` depends on an element id that can [per definition](http://www.w3.org/TR/html401/struct/global.html#h-7.5.2) not exist more than one time in the same document. 
-
-
 ## Options
 **hours12** (default: true)   
 Type: Boolean   
