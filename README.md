@@ -8,6 +8,11 @@ Providing the functionality of [Zhao Xiaodong's timeselector jQuery plugin](http
 
 ## UNDER CONSTRUCTION - TO DO:
 
+### *adjusting JS to data's data structure*
+
+!!! The data plugin applies CLASS and NAME to INPUT in a very special way ...
+
+
 ### *creating helper.php*
 
 
