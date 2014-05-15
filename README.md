@@ -1,6 +1,6 @@
 # Timeselector - DokuWiki-Helper-Plugin-Version
 
-Providing the functionality of [Zhao Xiaodong's timeselector jQuery plugin](https://github.com/nicolaszhao/timeselector) for DokuWiki
+Providing the functionality of [Nicolas Zhao's timeselector jQuery plugin](https://github.com/nicolaszhao/timeselector) for DokuWiki
 
   * *Original version: https://github.com/nicolaszhao/timeselector*
   * *This version: https://github.com/hh-lohmann/timeselector/tree/dokuwiki-helper-plugin*
